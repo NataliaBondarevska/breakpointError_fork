@@ -138,7 +138,7 @@ p <- ggplot(signal.df,aes(locations,signal))+
   geom_vline(aes(xintercept=first.base-1/2),linetype="dashed",
              data=seg.df[-1,],colour=signal.colors["latent"])+
   facet_grid(bases.per.probe~.,
-             labeller=function(var,val)sprintf("bases/probe = %s",val))+
+             labeller=function(var, val)sprintf("bases/probe "))+
   xlab("position in base pairs")
 
 print(p)
@@ -197,7 +197,7 @@ kplot <- ggplot(err.df,aes(segments,error))+
   geom_line(aes(colour=bases.per.probe))+
   geom_point()+
   facet_grid(.~bases.per.probe,
-             labeller=function(var,val)sprintf("bases/probe = %s",val))+
+             labeller=function(var,val)sprintf("bases/probe = "))+
   scale_colour_manual(leg,values=bpp.colors,guide="none")+
   scale_x_continuous(minor_breaks=NULL)
   
@@ -237,7 +237,7 @@ p <- ggplot(lerr.df,aes(log10(lambda),error))+
   geom_line(aes(size=bases.per.probe,colour=bases.per.probe))+
   geom_point(aes(fill=bases.per.probe),pch=21,data=subset(lerr.df,optimal))+
   facet_grid(.~alpha,
-             labeller=function(var,val)sprintf("%s = %s",var,val))+
+             labeller=function(var,val)sprintf(" = "))+
   scale_size_manual(leg,values=sizes)+
   scale_fill_manual(leg,values=bpp.colors)+
   scale_color_manual(leg,values=bpp.colors)
@@ -303,7 +303,7 @@ p <- ggplot(,aes(log10(lambda),error))+
                colour=opt.color)+
   geom_text(aes(text.at,label=round(error,1),hjust=hjust,vjust=vjust),
             data=opt.err,colour=opt.color)+
-  facet_grid(.~alpha,labeller=function(var,val)sprintf("%s = %s",var,val))
+  facet_grid(.~alpha,labeller=function(var,val)sprintf(" = "))
 print(p)
 @   
 
