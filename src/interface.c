@@ -71,3 +71,16 @@ breakpointError_interface
 			   guess_ptr,guess_count[0],
 			   last_base[0]);
 }
+
+
+
+void errorDetails_interface_C(int *break_ptr, int *break_count, int *left_ptr, int *right_ptr,
+                              double *false_positive_ptr, double *false_negative_ptr, double *imprecision_ptr,
+                              int *guess_ptr, int *guess_count, double *guess_unidentified_ptr, 
+                              int *guess_unidentified_count, int *result)
+{
+    *result = errorDetails(break_ptr, *break_count, left_ptr, right_ptr,
+                           false_positive_ptr, false_negative_ptr, imprecision_ptr,
+                           guess_ptr, *guess_count, guess_unidentified_ptr, 
+                           *guess_unidentified_count);
+}
