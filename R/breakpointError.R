@@ -93,6 +93,22 @@ errorComponents <- structure(function
                dl.combine("first.qp","last.qp"))
 })
 
+errorDetails_C <- function(guess, 
+                           breaks, 
+                           left, 
+                           right,
+                           false_positive,
+                           false_negative,
+                           imprecision,
+                           guess_unidentified)
+{
+  .C("errorDetails_interface_C", as.integer(breaks), as.integer(length(breaks)),
+    as.integer(left), as.integer(right), as.real(false_positive), as.real(false_negative),
+    as.real(imprecision), as.integer(guess), as.integer(length(guess)), 
+    as.real(guess_unidentified), as.integer(length(guess_unidentified)), 
+    result=double(1), PACKAGE="breakpointError")$error
+}
+
 breakpointError <- structure(function
 ### Calculate the exact breakpoint error. We assume there is a latent
 ### piecewise constant signal defined on 1,...,last.base.
